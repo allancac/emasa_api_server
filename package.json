@@ -4,7 +4,11 @@
   "description": "An API for a mining industry sales system.",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "cross-env NODE_ENV=production node src/index.js",
+    "dev": "cross-env NODE_ENV=development nodemon src/index.js",
+    "test": "npx jest --detectOpenHandles",
+    "watchTest": "npx jest --detectOpenHandles --watchAll",
+    "coverage": "npx jest --coverage"
   },
   "repository": {
     "type": "git",
@@ -28,6 +32,7 @@
   "devDependencies": {
     "cross-env": "^7.0.3",
     "jest": "^29.6.2",
-    "nodemon": "^3.0.1"
+    "nodemon": "^3.0.1",
+    "sucrase": "^3.34.0"
   }
 }
