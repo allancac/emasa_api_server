@@ -2,6 +2,7 @@ import config from 'config'
 import express from 'express';
 import cors from 'cors';
 import morgan from 'morgan';
+import statusRoutes from './routes/statusRoutes';
 
 class App {
     constructor(){
@@ -32,6 +33,7 @@ class App {
     }
     
     routes(){
+        this.app.use([statusRoutes] )
     }
 }
 
