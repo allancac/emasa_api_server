@@ -1,0 +1,13 @@
+{
+    "server":{
+        "port":5500
+    },
+    
+    "origin":{
+        "host": "*"
+    },
+
+    "jwt":{
+        "appSecret": ""
+    }
+}
