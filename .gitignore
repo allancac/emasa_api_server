@@ -130,3 +130,4 @@ dist
 .pnp.*
 config/config.json
 config/development.json
+postgres-docker-composer.yaml

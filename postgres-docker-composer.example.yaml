@@ -6,16 +6,29 @@ services :
     ports: 
       - 5432:5432
     environment: 
-      - POSTGRES_DB=emasa
+      - POSTGRES_DB=
       - POSTGRES_USER=
       - POSTGRES_PASSWORD= 
+    volumes:
+      - <LOCAL VOLUME DIRECTORY>:/var/lib/postgresql/data
+  emasaapi:
+    image: emasa_api_dev:1.0.0
+    hostname: emasa_api_dev
+    build: .
+    command: npm run dev
+    ports:
+      - 5500:5500
+    volumes: 
+      - .:/home/api_emasa
+    depends_on: 
+      - emasadb
   pgadmin: 
     image: dpage/pgadmin4
     hostname: pgadmin
     ports:
       - 81:80
     environment: 
-      - PGADMIN_DEFAULT_EMAIL=
+      - PGADMIN_DEFAULT_EMAIL=a
       - PGADMIN_DEFAULT_PASSWORD=
     depends_on:
-      - "emasadb"
+      - emasadb
