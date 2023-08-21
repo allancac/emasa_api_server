@@ -7,10 +7,14 @@ import statusRoutes from "./routes/statusRoutes";
 class App {
   constructor() {
     this.app = express();
+    this.startDatabase();
     this.middlewares();
     this.routes();
   }
 
+  startDatabase(){
+    require('./models/index');
+  }
   middlewares() {
     // Body parser Middleware to receive a JSON data in the body
     this.app.use(express.json());
