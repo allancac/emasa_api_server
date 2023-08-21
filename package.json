@@ -10,7 +10,10 @@
     "watchTest": "npx jest --detectOpenHandles --watchAll",
     "coverage": "npx jest --coverage"
   },
-  "repository": "git+https://github.com/allancac/emasa_api_server.git",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/allancac/emasa_api_server.git"
+  },
   "keywords": [],
   "author": "Allan Chaves",
   "license": "MIT",
