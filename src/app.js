@@ -2,7 +2,10 @@ import config from "config";
 import express from "express";
 import cors from "cors";
 import morgan from "morgan";
+import { scopePerRequest } from 'awilix-express';
+import container from './container';
 import statusRoutes from "./routes/statusRoutes";
+import usuariosRoutes from "./routes/usuariosRoutes"
 
 class App {
   constructor() {
@@ -13,7 +16,7 @@ class App {
   }
 
   startDatabase(){
-    require('./models/index');
+    require('./database')
   }
   middlewares() {
     // Body parser Middleware to receive a JSON data in the body
@@ -36,11 +39,16 @@ class App {
     if (process.env.NODE_ENV === "development") {
       this.app.use(morgan("dev"));
     }
+
+    // Configures a request scope for Dependency Injection 
+    this.app.use(scopePerRequest(container));
   }
 
   routes() {
-    this.app.use([statusRoutes]);
+    this.app.use('/status',statusRoutes);
+    this.app.use('/usuarios',usuariosRoutes);
   }
 }
+
 
 export default new App().app;
