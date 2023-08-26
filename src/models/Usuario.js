@@ -1,6 +1,7 @@
 const { Sequelize, DataTypes, Model } = require("sequelize");
-class Usuario extends Model{
-  static init(sequelize) {
+
+class Usuario extends Model {
+  static init = (sequelize) => {
     super.init(
       {
         id: { type: Sequelize.UUID, primaryKey: true },
@@ -16,9 +17,9 @@ class Usuario extends Model{
       {
         sequelize,
         timestamps: true,
+        tableName: "usuarios",
       }
     );
-  }
+  };
 }
-
 module.exports = Usuario;
