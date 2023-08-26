@@ -1,9 +1,9 @@
+const {setup} = require ('./container');
+setup();
 import config from "config";
 import express from "express";
 import cors from "cors";
 import morgan from "morgan";
-import { scopePerRequest } from 'awilix-express';
-import container from './container';
 import statusRoutes from "./routes/statusRoutes";
 import usuariosRoutes from "./routes/usuariosRoutes"
 
@@ -39,9 +39,6 @@ class App {
     if (process.env.NODE_ENV === "development") {
       this.app.use(morgan("dev"));
     }
-
-    // Configures a request scope for Dependency Injection 
-    this.app.use(scopePerRequest(container));
   }
 
   routes() {

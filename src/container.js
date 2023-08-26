@@ -1,13 +1,22 @@
-import { createContainer, asClass, asValue } from "awilix";
+const awilix = require("awilix");
+import UsuariosController from "./controllers/UsuariosController";
 import UsuariosServices from "./services/UsuariosServices";
 import Usuario from "./models/Usuario";
 
-const container = createContainer();
-
-container.register({
-  usuariosServices: asClass(UsuariosServices),
-	usuario: asClass(Usuario),
+const container = awilix.createContainer({
+  injectionMode: awilix.InjectionMode.PROXY,
 });
 
+function setup() {
+  container.register({
+    usuariosController: awilix.asClass(UsuariosController),
+    usuariosServices: awilix.asClass(UsuariosServices),
+    usuarioModel: awilix.asValue(Usuario),
+  });
+}
 
-export default container;
+
+module.exports = {
+  container,
+  setup,
+};
