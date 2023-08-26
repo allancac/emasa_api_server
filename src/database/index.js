@@ -1,12 +1,12 @@
-const Sequelize = require('sequelize')
-const process = require('process');
+const { Sequelize } = require("sequelize");
+const process = require("process");
 const env = process.env.NODE_ENV;
-const dbconfig = require('../../config/config.json')[env];
+const dbconfig = require("../../config/config.json")[env];
+const Usuario = require("../models/Usuario")
 
-const Usuario = require('../models/Usuario')
+const sequelize = new Sequelize(dbconfig);
 
-const connection = new Sequelize(dbconfig)
+Usuario.init(sequelize);
 
-Usuario.init(connection);
 
-module.exports = connection;
+module.exports = sequelize;
