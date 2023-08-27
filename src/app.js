@@ -1,4 +1,4 @@
-const {setup} = require ('./container');
+import {setup} from './container';
 setup();
 import config from "config";
 import express from "express";
