@@ -1,7 +1,7 @@
-import express from 'express';
-const router = express.Router();
+import {Router} from 'express';
+const routes = new Router();
 import statusController from '../controllers/StatusController'
 
-router.get('/', statusController.index);
+routes.get('/', statusController.index);
 
-export default router;
+export default routes;

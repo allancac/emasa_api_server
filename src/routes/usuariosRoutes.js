@@ -1,9 +1,9 @@
-import express from "express";
-const router = express.Router();
+import {Router} from 'express';
+const routes = new Router();
 
 const {container} = require('../container')
 const usuariosController = container.resolve('usuariosController')
 
-router.get("/", usuariosController.getAll);
+routes.get("/", usuariosController.getAll);
 
-export default router;
+export default routes;
