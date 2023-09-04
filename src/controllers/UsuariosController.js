@@ -3,10 +3,8 @@ export default class UsuariosController {
     this.usuariosServices = usuariosServices;
   }
   getAll = async (req, res) => {
-    console.log(this.usuariosService);
     const { offset, limit } = req.query;
     try {
-      console.log("CONTROLLER CHAMADO");
       const { count, rows } = await this.usuariosServices.getAllUsuarios(
         offset,
         limit
